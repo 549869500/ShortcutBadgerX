@@ -15,7 +15,7 @@ Usage
 2. Add dependencies for ShortcutBadgerX.
     ```gradle     
         dependencies {
-            implementation 'com.github.rlgo:ShortcutBadgerX:1.2.1'
+            implementation 'com.github.549869500:ShortcutBadgerX:1.2.1'
         }
     ```
 3. Add the codes below:
