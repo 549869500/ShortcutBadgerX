@@ -23,7 +23,7 @@ import me.leolin.shortcutbadger.util.BroadcastHelper;
 /**
  * @author leolin
  */
-@Deprecated
+//@Deprecated
 public class XiaomiHomeBadger implements Badger {
 
     public static final String INTENT_ACTION = "android.intent.action.APPLICATION_MESSAGE_UPDATE";
@@ -72,13 +72,14 @@ public class XiaomiHomeBadger implements Badger {
             Notification.Builder builder = new Notification.Builder(context)
                     .setContentTitle("")
                     .setContentText("")
+                    .setNumber(badgeCount)
                     .setSmallIcon(resolveInfo.getIconResource());
             Notification notification = builder.build();
             try {
-                Field field = notification.getClass().getDeclaredField("extraNotification");
-                Object extraNotification = field.get(notification);
-                Method method = extraNotification.getClass().getDeclaredMethod("setMessageCount", int.class);
-                method.invoke(extraNotification, badgeCount);
+//                Field field = notification.getClass().getDeclaredField("extraNotification");
+//                Object extraNotification = field.get(notification);
+//                Method method = extraNotification.getClass().getDeclaredMethod("setMessageCount", int.class);
+//                method.invoke(extraNotification, badgeCount);
                 mNotificationManager.notify(0, notification);
             } catch (Exception e) {
                 throw new ShortcutBadgeException("not able to set badge", e);
