@@ -55,6 +55,7 @@ public class XiaomiHomeBadger implements Badger {
         }
         if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
             tryNewMiuiBadge(context, badgeCount);
+            changeMIBadge(context, badgeCount);
         }
     }
 
@@ -85,6 +86,28 @@ public class XiaomiHomeBadger implements Badger {
                 throw new ShortcutBadgeException("not able to set badge", e);
             }
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private static void changeMIBadge(Context paramContext, int paramInt)
+    {
+      // if (isMIUI6())
+      //   return;
+      Intent localIntent = new Intent("android.intent.action.APPLICATION_MESSAGE_UPDATE");
+      localIntent.putExtra("android.intent.extra.update_application_component_name", "com.kcsm.acsa/.activity.SplashActivity");
+      String str;
+      if (paramInt > 0)
+        if (paramInt > mLimitCount)
+          str = "" + mLimitCount;
+      while (true)
+      {
+        localIntent.putExtra("android.intent.extra.update_application_message_text", str);
+        paramContext.sendBroadcast(localIntent);
+        return;
+        str = paramInt + "";
+        continue;
+        str = "";
+      }
     }
 
     @Override
