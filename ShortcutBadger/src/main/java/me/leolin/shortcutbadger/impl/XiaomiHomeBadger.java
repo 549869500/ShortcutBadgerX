@@ -93,21 +93,25 @@ public class XiaomiHomeBadger implements Badger {
     {
       // if (isMIUI6())
       //   return;
+      int mLimitCount = -1;
       Intent localIntent = new Intent("android.intent.action.APPLICATION_MESSAGE_UPDATE");
       localIntent.putExtra("android.intent.extra.update_application_component_name", "com.kcsm.acsa/.activity.SplashActivity");
       String str;
-      if (paramInt > 0)
-        if (paramInt > mLimitCount)
-          str = "" + mLimitCount;
-      while (true)
-      {
-        localIntent.putExtra("android.intent.extra.update_application_message_text", str);
-        paramContext.sendBroadcast(localIntent);
-        return;
-        str = paramInt + "";
-        continue;
-        str = "";
-      }
+      // if (paramInt > 0){
+      //   if (paramInt > mLimitCount){
+      //     str = "" + mLimitCount;}}
+      str = String.valueOf(paramInt) + "";
+      localIntent.putExtra("android.intent.extra.update_application_message_text", str);
+      paramContext.sendBroadcast(localIntent);
+      // while (true)
+      // {
+      //   localIntent.putExtra("android.intent.extra.update_application_message_text", str);
+      //   paramContext.sendBroadcast(localIntent);
+      //   return;
+      //   str = String.valueOf(paramInt) + "";
+      //   continue;
+      //   str = "";
+      // }
     }
 
     @Override
