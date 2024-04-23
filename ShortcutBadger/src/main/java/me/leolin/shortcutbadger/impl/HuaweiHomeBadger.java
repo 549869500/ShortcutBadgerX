@@ -21,27 +21,29 @@ public class HuaweiHomeBadger implements Badger {
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
-        Bundle localBundle = new Bundle();
-        localBundle.putString("package", context.getPackageName());
-        localBundle.putString("class", componentName.getClassName());
-        localBundle.putInt("badgenumber", badgeCount);
-
-        boolean huaweiSuccess = false;
-        try {
-            context.getContentResolver().call(Uri.parse(HUAWEI_URI), "change_badge", null, localBundle);
-            huaweiSuccess = true;
-        } catch (Exception ignored) {
-        }
-
-        boolean honorSuccess = false;
-        try {
-            context.getContentResolver().call(Uri.parse(HONOR_URI), "change_badge", null, localBundle);
-            honorSuccess = true;
-        } catch (Exception ignored) {
-        }
-
-        if (!huaweiSuccess && !honorSuccess)
-            throw new ShortcutBadgeException("Both huawei and honor content resolver have failed");
+        throw new ShortcutBadgeException("Both huawei and honor content resolver have failed");
+//
+//        Bundle localBundle = new Bundle();
+//        localBundle.putString("package", context.getPackageName());
+//        localBundle.putString("class", componentName.getClassName());
+//        localBundle.putInt("badgenumber", badgeCount);
+//
+//        boolean huaweiSuccess = false;
+//        try {
+//            context.getContentResolver().call(Uri.parse(HUAWEI_URI), "change_badge", null, localBundle);
+//            huaweiSuccess = true;
+//        } catch (Exception ignored) {
+//        }
+//
+//        boolean honorSuccess = false;
+//        try {
+//            context.getContentResolver().call(Uri.parse(HONOR_URI), "change_badge", null, localBundle);
+//            honorSuccess = true;
+//        } catch (Exception ignored) {
+//        }
+//
+//        if (!huaweiSuccess && !honorSuccess)
+//            throw new ShortcutBadgeException("Both huawei and honor content resolver have failed");
     }
 
     @Override

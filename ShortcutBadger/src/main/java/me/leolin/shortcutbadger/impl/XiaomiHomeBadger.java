@@ -96,6 +96,8 @@ public class XiaomiHomeBadger implements Badger {
       int mLimitCount = -1;
       Intent localIntent = new Intent("android.intent.action.APPLICATION_MESSAGE_UPDATE");
       localIntent.putExtra("android.intent.extra.update_application_component_name", "com.kcsm.acsa/.activity.SplashActivity");
+      //localIntent.putExtra("android.intent.extra.update_application_component_name", "me.leolin.shortcutbadger.example/.activity.SplashActivity");
+
       String str;
       // if (paramInt > 0){
       //   if (paramInt > mLimitCount){
